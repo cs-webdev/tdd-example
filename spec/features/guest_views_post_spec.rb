@@ -5,7 +5,7 @@ feature 'Guest views blog posts'  do
     Post.create title: 'Hello World', body: 'stuff'
     visit root_path
 
-    expect(page).to have_text 'Hello World'
+    expect(page.body).to have_text 'Hello World'
   end
 
   scenario 'filtered by tag' do
@@ -14,7 +14,7 @@ feature 'Guest views blog posts'  do
 
     visit root_path(tag: 'rails')
 
-    expect(page).to have_text 'Latest'
-    expect(page).not_to have_text 'Hello World'
+    expect(page.body).to have_text 'Latest'
+    expect(page.body).not_to have_text 'Hello World'
   end
 end
